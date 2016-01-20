@@ -1,0 +1,52 @@
+<html lang="en" ng-app="reddit-clone">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular.js Reddit Clone</title>
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-controller="home">
+      <h2>Hello, {{hello.title}}!</h2>
+      <form ng-submit="getData()" >
+        <input type="text" ng-model='usersearch'>
+        <input type='submit'>
+      </form>
+      <p>{{usersearch}}</p>
+      <div ng-repeat='post in postInfo'>
+        <p>{{post.title}}
+          {{post.author}}
+          {{post.ups}}
+          {{post.url}}
+          {{post.num_comments}}
+          <!-- {{post.selftext}} -->
+          <!-- <img ng-src="{{post.media_embed.content}}" /> -->
+          <img ng-src='{{post.thumbnail}}'/>
+        </p>
+      </div>
+    </div>
+      <script>
+      angular.module("reddit-clone" , [])
+      .controller('home', function($scope, $http){
+        $scope.hello = {};
+        $scope.hello.title = 'Welcome to Reddit Angular verision'
+        // $scope.usersearch = '';
+        $scope.getData = function(usersearch) {
+          $http.get("https://reddit.com/r/" + $scope.usersearch + ".json").success(function(data){
+            console.log(data);
+            var postInfo = [];
+            for(i = 0; i < data.data.children.length; i = i + 1){
+              var post = data.data.children[i];
+              postInfo.push(post.data)
+            }
+            $scope.postInfo = postInfo;
+          }).catch(function(err){
+            console.log(err)
+          })
+        }
+      })
+      </script>
+  </body>
+</html>
