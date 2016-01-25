@@ -1,0 +1,56 @@
+body{
+  background-color: #e1e1e1;
+  margin: 0;
+  padding: 0;
+}
+  .post {
+    width: 96%;
+    background-color: white;
+    display: flex;
+  }
+  li {
+    list-style: none;
+  }
+  .post-image {
+    flex-direction: row;
+    width: 350px;
+  }
+  .post-content {
+    flex-direction: row;
+    width: 500px;
+  }
+  nav {
+    width: 100%;
+    height: 75px;
+    background-color: white;
+    display: flex:
+  }
+  input {
+    margin: 10px;
+    height: 50px;
+    font-size: 1.2em;
+    flex-direction: row;
+    text-align: center
+  }
+  .btn{
+    background-color: #e1e1e1;
+    border:none;
+    flex-direction: row;
+    width: 250px;
+    transition: color 1s;
+  }
+  .btn:hover {
+    background-color: #98FB98;
+    color: #424242;
+  }
+  .brand {
+    font-family: "Verdana";
+    display: inline-flex;
+    margin-left: 20px;
+    color: #424242;
+  }
+  form {
+    display: flex;
+    flex-direction: row;
+    display: inline-block;
+  }
